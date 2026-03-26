@@ -8,7 +8,6 @@ init(autoreset=True)  # Automatically resets style after every print
 
 # Starting game data
 GameData = {
-    'Money': 100,
     'Inventory': [],
     'Karma': 0,
     'PlayerLocation': "Macrohard",
