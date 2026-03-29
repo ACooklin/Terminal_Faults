@@ -138,7 +138,7 @@ def SpiderDancemission2(): #Mission Name: Handsome Ransom
     QuizAnswer = QuizAnswer.upper() #Makes the answers case-neutral
     if QuizAnswer == "A":
         "\"I shouldn't have to teach you this, but whatever. There's an attack called reverse-brute force, where you use a password you think might work and try it against every username. \nI already gave you a list of employee records, so use a password you think might work, and try it with every single username.\""
-        input("Try again")
+        input("Try again \n")
         SpiderDancemission2()
     elif QuizAnswer == "B":
         print("Success! You eventually find an employee you can log into their website with. Whoever this jWhite is, you can't help but feel a little bad for her. \nStill, a job is a job, and you send the credentials to ShoePuppet.")
@@ -155,9 +155,6 @@ def SpiderDancemission2(): #Mission Name: Handsome Ransom
         print("You need to input A, B, C or D.")
         input("Try again? \n")
         SpiderDancemission2()
-SpiderDancemission2()
-
-
 
 def SinKingShipMission2(): # Euler's Oil
     print("BlueGolem, we have a real mission for you. ")
@@ -166,20 +163,63 @@ def SinKingShipMission2(): # Euler's Oil
     print("I don't care what you do, just slow them down and break some stuff.")
     print("Go to their website and see what you can do.\n")
     print("     -Sinking")
+    QuizAnswer = input("\nYou don't quite  understand what to do. You haven't been given a username to try or anything. You just know something wasn't secured properly. Do you: \nA. Ask for help \nB. Get a password, and try every username until one works\nC. Get a username, and try every password until one works \nD. Try every username AND password until one works\n")
+    QuizAnswer = QuizAnswer.upper()
+    if QuizAnswer == "A":
+        print("\"There's an attack called reverse-brute force, where you use a password suspect could work and check it with every username. \nUse a password you think might work, and try it with every single username.\"")
+        input("Try again? \n")
+        SinKingShipMission2()
+    elif QuizAnswer == "B":
+        print("Success! You eventually find an employee you can log into their website with. Whoever this kSteele is, you can't help but feel a little bad for her. \nStill, a job is a job, and you send the credentials to SinKing saying this is the most you can do.")
+        print(Style.BRIGHT + "Your reputation with SinKingShip has increased. Your skill with brute force is now MAXXED.")
+    elif QuizAnswer == "C":
+        print("You take a look through their website until you find  random username, kSteele. You input it and run a program to try it with every possible password, but run into a problem after just three attempts. \nAccount lockout. It's not letting you try more passwords.")
+        input("Try again? \n")
+        SinKingShipMission2()
+    elif QuizAnswer == "D":
+        print("No. Not only do you get an account lockout, but even if you didn't, this would take too long.")
+        input("Try again? \n")
+        SinKingShipMission2()
+    else:
+        print("You need to input A, B, C or D.")
+        input("Try again? \n")
+        SinKingShipMission2()
 
-def BitSecMission3(): #Mission Name: Shiny Garbage (Bug Bounty)
-    print("While digging for bug bounties, you found a company that had a recent data leak and wanted to be sure their user passwords were still safe.")
-    print("You can see the usernames and passwords of other users, which is bad, but the passwords are encrypted, so theoretically they still should be safe.")
+
+def BitSecMission3(): #Mission Name: Shiny Garbage (Bug Bounty), requires Rainbow Tables 1
+    print("While digging for bug bounties, you found a company that had a recent data leak and wanted to be sure their employee passwords were still safe.")
+    print("You can see the usernames and passwords of other employees, which is bad, but the passwords are encrypted, so theoretically they still should be safe.")
     print("You have a hunch it's not that simple though. If only you knew a way to break encryption.")
+    input("\nReady?")
+    print("You use the RainbowTable app you installed to check if their hashing is insecure. ")
+    time.sleep(1.0)
+    print(...) 
+    time.sleep(0.5)
+    print(...) 
+    time.sleep(0.5)
+    print(...) 
+    time.sleep(0.5)
+    print("Success! It looks like this garbage disposal company is using an outdated hashing algorithm and didn't salt their passwords to protect against this attack.")
+    print("After reporting the bug and collecting your bounty, you show off the attack at your next BitSec meeting.") 
+    print("There is some polite applause from the audience, like they're applauding a middle school science project.")
+    time.sleep("1.5")
+    print("...It still feels good though.")
+    print(Style.BRIGHT + "You aren't talented enough at math to have a better understanding of Rainbow Tables, so your skill is still MAXXED. Your reputation with BitSec has increased!")
 
-def SpiderDanceMission3(): #Mission Name: Operation Iridescent Spider
+def SpiderDanceMission3(): #Mission Name: Operation Iridescent Spider, requires Rainbow Tables 1
     print("bMail just had a really big data leak.")
     print("Lots of user account details are out, but the passwords are hashed.")
     print("Figure out a way to break that encryption and there's lots of money in it for you.")
     print("You can find the data here: pastecan.io/bMailLeak\n")
     print("     -Spyder")
+    input("\nReady?")
+    print("You successfully use the RainbowTable app you installed to check if their hashing is insecure. ")
+    print(Style.BRIGHT + "You aren't talented enough at math to have a better understanding of Rainbow Tables, so your skill is still MAXXED. Your reputation with Spider Dance has increased!")
 
-def SinKingShipMission3(): #Mission Name: RainBow Training
+    
+
+
+def SinKingShipMission3(): #Mission Name: Rainbow Training  TODO: Write this mission better
     print("Hey, do you wanna see an attack I found?")
     print("It's called a " + Style.BRIGHT + "Rainbow Table.")
     print("It's pretty cool, you can use it to break encryption!")
@@ -191,11 +231,51 @@ def SinKingShipMission3(): #Mission Name: RainBow Training
 def BitSecMission4(): #Mission Name: XSS Webtest
     print("Some Startups, an investment company, recently made a new website for startups to apply for seed money")
     print("They have a web form that looks interesting, maybe you can find some problems there?")
+    input("\nReady?")
+    print("You're looking for weaknesses, but you haven't found anything just yet. They have correct account lockouts, no recent data leaks, \n it seems like their servers are secured correctly, what can you do?")
+    QuizAnswer = input("Do you \nA: Give up \nB: Ask for help \nC: Mess with their web form\n")
+    QuizAnswer = QuizAnswer.upper()
+    if QuizAnswer == "A":
+        print("Never back down, never give up! There's no such thing as a perfect system.")
+        input("Ready?\n")
+        BitSecMission4()
+    if QuizAnswer == "B":
+        print("You call up your friend Buggy, and he explains an idea he has. \"I trust you're familiar with XSS attacks? \nI bet you could use one here. If you use this web form they have for startups to apply for money, maybe it isn't sanitized correctly and you could find something there.\"")
+        input("Looks like you need to attack their web form. Ready? \n")
 
-def SpiderDanceMission4(): #Mission Name: San XSS-cobar
+
+def SpiderDanceMission4(usernamelist = False): #Mission Name: San XSS-cobar
     print("San Escobar Bank recently opened, go take a look and see if you can find anything there to make us some money.")
     print("ProFit, a mercenary who works with us sometimes, has some ideas about ways we can break into their system. Expect to be compensated well.\n")
     print("     -Spyder")
+    print("You're not sure what to do to attack this bank. They don't have a mobile app, you obviously can't travel to San Escobar to try to attack them in person. \nThe only option you really have is their website.")
+    QuizAnswer = input("Do you: \nA: Try to brute force their login system \nB: Talk to ProFit \nC: Attack the servers directly \nD: Attack through their login page\n")
+    QuizAnswer = QuizAnswer.upper()
+    if QuizAnswer == "A" and usernamelist == False:
+        print("No dice. You got an account lockout, and you don't have a list of usernames to attempt reverse brute-force.")
+        input("Ready to try again? \n")
+        SpiderDanceMission4()
+    elif QuizAnswer == "A" and usernamelist == True:
+        print("Success! With the list of usernames you've obtained, you manage to execute a reverse brute force attack, obtaining access credentials of multiple bank members.")
+        print(Style.BRIGHT + "Your skill with XSS attacks has increased! Your reputation with Spider Dance has increased!")
+    elif QuizAnswer == "B":
+        print("\"Hello, BlueGolem. My name is ProFit, and Spyder has informed me that you would be assisting me with this operation. \nMy current best idea is to perform an XSS attack on their web page, causing it to send the credentials of all successful login attempts to a website owned by Spider Dance.\"")
+        print("The two of you attempt the XSS attack, but with only some success. You manage to get a list of usernames, but the passwords are encrypted and salted before they get to you.")
+        print(Style.BRIGHT + "If only there was something you could do with a list of usernames.")
+        input("Ready?\n")
+        SpiderDanceMission4(usernamelist=True)
+    elif QuizAnswer == "C":
+        print("Looks like nothing for you here. You don't have the IP for any of their servers, you don't even know what to attack.")
+        input("Ready to try again? \n")
+        SpiderDanceMission4()
+    elif QuizAnswer == "D":
+        print("You take a closer look at their web form, and although it seems simple enough, it's actually fairly well protected. \nYou could probably take down their form, but that wouldn't make you any money. \nMaybe ProFit has some ideas?")
+        input("Ready?\n")
+        SpiderDanceMission4()
+    else:
+        print("Type A, B, C, or D.")
+        input("Ready?")
+        SpiderDanceMission4()
 
 def SinKingShipMission4(): #Mission Name: Lethal Injection
     print("One of our more zealous operatives, RootRaider, got caught in San Escobar trying to break up their fossil fuel logistics.")
@@ -203,12 +283,32 @@ def SinKingShipMission4(): #Mission Name: Lethal Injection
     print("They have a draconian legal system, so he received the death sentence and is currently awaiting his execution. ")
     print("Go save him. I bet you can figure something out using their visitor form, to at least buy some time.\n")
     print("     -SinKing \n")
+    print("You open the visitor form, and see a bunch of information. You can't upload files, which would have made things easy, but you can upload text.")
+    QuizAnswer = input("You don't know how to attack them. You can \nA: Ask SinKing for help \nB: Look for more info \nC: Little Bobby Tables \n")
+    QuizAnswer = QuizAnswer.upper()
+    if QuizAnswer == "A":
+        print("\"If I had any good ideas as to how to get him out, I wouldn't have had to ask you. I'm sorry, I truly wish I could do more.\"")
+        input("Well, that was useless. Ready to try again?")
+        SinKingShipMission4()
+    elif QuizAnswer == "B":
+        print("Digging a little deeper into their website, you still aren't finding much. You dig through their cases for a while, and although you find plenty of examples of injustice, you aren't finding any weaknesses to act on.")
+        input("Ready to try again?")
+        SinKingShipMission4()
+    elif QuizAnswer == "C":
+        print("If you can't attack anything else, you'll attack the web form.")
+        time.sleep(1.0)
+        print("You submit a request to visit. Not you, of course, but \"Robert') DROP TABLE Prisoners;--\" who destroys their database. \nHow are they going to execute these prisoners when they don't even know who to execute?")
+        print("This solution won't last forever, but it should still buy some time.")
+        time.sleep(1.0)
+        print(Style.BRIGHT + "Your reputation with SinKingShip has increased! Your skill with XSS attacks has increased!")
 
 def BitSecMission5(): #Mission Name: Operation Arachnicide
     print("This is Agent Kaid White. You know me as Fedditor.")
     print("Spyder, the leader of the hacking group known as Spider Dance, has finally overstepped for the first time in decades.")
     print("He left his browser unsecured. We've already logged his cookies, but they're not that useful.")
-    print(" If we can find a way to make him do something incriminating with that browser, we can get something useful and finally put him behind bars.")
+    print(" If we can find a way to make him do something incriminating with that browser, we can put him behind bars.")
+
+
 
 def SpiderDanceMission5(): #Mission Name: Spying On The Spies
     print("We finally have a way in.")
