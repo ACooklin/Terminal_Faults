@@ -42,6 +42,70 @@ MissionsData = {
             "requires": 4,
             "repeatable": False
         }
+    ],
+    "SpiderDance": [
+        {
+            "name": "Welcome to SpiderDance",
+            "func": Missions.SpiderDancemission1,
+            "requires": 0,
+            "repeatable": False
+        },
+        {
+            "name": "Handsome Ransome",
+            "func": Missions.SpiderDancemission2,
+            "requires": 1,
+            "repeatable": False
+        },
+        {
+            "name": "Operation Iridescent Spider",
+            "func": Missions.SpiderDanceMission3,
+            "requires": 2,
+            "repeatable": False
+        },
+        {
+            "name": "San XSS-cobar",
+            "func": Missions.SpiderDanceMission4,
+            "requires": 3,
+            "repeatable": False
+        },
+        {
+            "name": "Spyder Bites",
+            "func": Missions.SpiderDanceMission5,
+            "requires": 4,
+            "repeatable": False
+        }
+    ],
+        "SinKingShip": [
+        {
+            "name": "Welcome to SinKingShip",
+            "func": Missions.SinKingShipMission1,
+            "requires": 0,
+            "repeatable": False
+        },
+        {
+            "name": "Euler's Oil",
+            "func": Missions.SinKingShipMission2,
+            "requires": 1,
+            "repeatable": False
+        },
+        {
+            "name": "Rainbow Education",
+            "func": Missions.SinKingShipMission3,
+            "requires": 2,
+            "repeatable": False
+        },
+        {
+            "name": "Lethal Injection",
+            "func": Missions.SinKingShipMission4,
+            "requires": 3,
+            "repeatable": False
+        },
+        {
+            "name": "The Green Baron",
+            "func": Missions.SinKingShipMission5,
+            "requires": 4,
+            "repeatable": False
+        }
     ]
 }
 
@@ -64,7 +128,7 @@ def ShowMissionMenu(branch):
 
         print(f"{i+1}. {mission['name']} {status}")
 
-    print(r"0. Back")
+    print("0. Back")
 
     choice = input("> ")
     return choice
@@ -74,11 +138,11 @@ def RunMission(branch, mission_index):
     progress = GameData[GetProgressKey(branch)]
 
     if mission_index < 0 or mission_index >= len(missions):
-        print(r"Invalid mission.")
+        print("Invalid mission.")
         return
 
     if mission_index > progress:
-        print(r"That mission is locked.")
+        print("That mission is locked.")
         return
 
     mission = missions[mission_index]
@@ -99,7 +163,7 @@ def MissionHub(branch):
             return
 
         if not choice.isdigit():
-            print(r"Invalid input.")
+            print("Invalid input.")
             continue
 
         mission_index = int(choice) - 1
@@ -107,39 +171,40 @@ def MissionHub(branch):
 
 def GameLoop():
     while True:
-        print(r"\nWhat do you want to do?")
-        print(r"1. BitSec Missions")
-        print(r"2. Spider Dance Missions (Coming Soon)")
-        print(r"3. SinKingShip Missions (Coming Soon)")
-        print(r"4. Save Game")
-        print(r"5. Quit")
-
+        print("\nWhat do you want to do?")
+        if GameData["BitSecProgress"] >= 0:
+            print("1. BitSec Missions")
+        else:
+            print("1. Locked")
+        if GameData["SpiderDanceProgress"] >= 0:
+            print("2. SpiderDance Missions")
+        else:
+            print("2. Locked")
+        if GameData["SinKingShipProgress"] >= 0:
+            print("3. SinKingShip Missions")
+        else:
+            print("3. Locked")
+        print("4. Save Game")
+        print("5. Quit")
         choice = input("> ")
-
         if choice == "1":
             MissionHub("BitSec")
-
         elif choice == "2":
-            print(r"Spider Dance not implemented yet.")
-
+            MissionHub("SpiderDance")
         elif choice == "3":
-            print(r"SinKingShip not implemented yet.")
-
+            MissionHub("SinKingShip")
         elif choice == "4":
             SaveGame()
-
         elif choice == "5":
-            print(r"Goodbye.")
+            print("Goodbye.")
             SaveGame()
             sys.exit()
-
         else:
-            print(r"Invalid input.")
+            print("Invalid input.")
 
 
 # Starting game data
 GameData = {
-    'Inventory': [],
     'Karma': 0,
     'PlayerLocation': "Macrohard",
     'brute_force': 0,
@@ -150,9 +215,9 @@ GameData = {
     #Game Progress
     'GameProgress': 0,
     #Game Branch Progress
-    'BitSecProgress': 0,
-    'SpiderDanceProgress':0,
-    'SinKingShipProgress': 0
+    'BitSecProgress': -1, #Starts at -1 when not unlocked
+    'SpiderDanceProgress':-1,
+    'SinKingShipProgress': -1
 
 }
 
@@ -170,22 +235,15 @@ def LoadGame(filename='SaveGame.json'):
             GameData = json.load(f)
         print(f"Game loaded from {filename}")
     else:
-        print(r"No save file found. Starting new game.")
+        print("No save file found. Starting new game.")
         time.sleep(0.65)
         SaveGame()
 
 
 LoadGame()
-#Setting variable shortcuts
-Inventory = GameData["Inventory"]
-PlayerLocation = GameData["PlayerLocation"]
-brute_force = GameData['brute_force']
-rainbow_table = GameData['rainbow_table']
-xss_attack = GameData['xss_attack']
+
 #Setting info
 TextSpeed = GameData['TextSpeed']
-#Game Progress
-GameProgress = GameData["GameProgress"]
 
 
 
@@ -201,52 +259,53 @@ print(r"   ▒▒▒▒▒     ▒▒▒▒▒▒  ▒▒▒▒▒     ▒▒▒
                                                                                                                                                    
                                                                                                                                                    
                                                                                                                                                    
-print(r"Welcome to Terminal Faults! This game is designed to teach you the basics of how to hack, how hackers think, and how to protect yourself. ")
+print("Welcome to Terminal Faults! This game is designed to teach you the basics of how to hack, how hackers think, and how to protect yourself. ")
 time.sleep(2.0 * TextSpeed)
-print(r"NOTE: This game contains ASCII Art not, not all of which was made by me. Credit has been assigned in accordance with the Digital Millenium Copyright Act.")
+print("NOTE: This game contains ASCII Art not, not all of which was made by me. Credit has been assigned in accordance with the Digital Millenium Copyright Act.")
 time.sleep(2.0 * TextSpeed)
 def ReadyOrNot():
     Entergame=input("Are you ready to play? \n >y \n >n \n")
     if Entergame == "n":
-        print(r"Then come back later. ")
+        print("Then come back later. ")
         time.sleep(1.5)
         quit()
     elif Entergame != "y":
-        print(r"It's a yes or no question, just type the letter y!")
+        print("It's a yes or no question, just type the letter y!")
         ReadyOrNot()
 ReadyOrNot()
 
+
 # Introduction
-if GameProgress == 0:
-    print(r"It is a wonderful, sunny day here at MacroHard™ and you are a terrible employee.")
+if GameData["GameProgress"] == 0:
+    print("It is a wonderful, sunny day here at MacroHard™ and you are a terrible employee.")
     time.sleep(2.0 * TextSpeed)
-    print(r"After months of claiming your plans to 'circle back,' people have finally noticed that you never actually did any work.")
+    print("After months of claiming your plans to 'circle back,' people have finally noticed that you never actually did any work.")
     time.sleep(2.0 * TextSpeed)
-    print(r"Your boss calls you into his office. He begins to talk with you about value add, benchmarks, and timelines.")
+    print("Your boss calls you into his office. He begins to talk with you about value add, benchmarks, and timelines.")
     time.sleep(2.0)
-    print(r"He quickly notices your eyes seeming to glaze over.")
+    print("He quickly notices your eyes seeming to glaze over.")
     time.sleep(1.5 * TextSpeed)
-    print(r"After a moment, he comes to a conclusion, and types something into his laptop.")
+    print("After a moment, he comes to a conclusion, and types something into his laptop.")
     time.sleep(3.0 * TextSpeed)
-    print(r"He spins his laptop around, and you see a blank Visual Studio Code tab.")
+    print("He spins his laptop around, and you see a blank Visual Studio Code tab.")
     time.sleep(1.5)
     print('"Write a program to reverse a linked list, right now." ')
     time.sleep(3.0)
-    print(r"You don't know how to do that. You've never known how to write any code.")
+    print("You don't know how to do that. You've never known how to write any code.")
     time.sleep(2.0)
-    print(r"Well, you managed to collect a paycheck for a couple months. Better than you expected, at least.")
+    print("Well, you managed to collect a paycheck for a couple months. Better than you expected, at least.")
     time.sleep(3.5)
-    print(r"You excuse yourself to head to the bathroom, walking out of the office a little too fast.")
+    print("You excuse yourself to head to the bathroom, walking out of the office a little too fast.")
     time.sleep(3.5)
-    print(r"You walk past the bathroom door, headed towards your desk, and thus, your stuff.")
+    print("You walk past the bathroom door, headed towards your desk, and thus, your stuff.")
     time.sleep(2.0)
-    print(r"You grab your meager belongings; a laptop, some loose meeting notes, and some office supplies.")
+    print("You grab your meager belongings; a laptop, some loose meeting notes, and some office supplies.")
     time.sleep(2.0 * TextSpeed)
     GameData['GameProgress']+= 1
-    print(r"Saving...")
+    print("Saving...")
     time.sleep(0.8)
     SaveGame()
-    print(r"After a quick trip outside, it's up to you where to go.")
+    print("After a quick trip outside, it's up to you where to go.")
     time.sleep(1.5)
 
 #The game begins
@@ -267,17 +326,17 @@ if PlayerLocation == "home":
     print(r"                  ===")
     print(r"                   ===")
     print(r"                    ===")
-    print(r"")
-    print(r"Home sweet home.")
-    print(r"The thought of what those bastards at MacroHard did to you is angering you more and more. How could they fire you just like that? ")
+    print("")
+    print("Home sweet home.")
+    print("The thought of what those bastards at MacroHard did to you is angering you more and more. How could they fire you just like that? ")
     time.sleep(1 * TextSpeed)
-    print(r"After you worked for them for how many months? This cannot stand. ")
+    print("After you worked for them for how many months? This cannot stand. ")
     time.sleep(1.0 * TextSpeed)
-    print(r"They think you're incompetent, huh?")
+    print("They think you're incompetent, huh?")
     time.sleep(1 * TextSpeed)
-    print(r"Well, how about you show them just how incompetent you are, then? ")
+    print("Well, how about you show them just how incompetent you are, then? ")
     time.sleep(1 * TextSpeed)
-    print(r"When you hack them, they'll be sorry! ")
+    print("When you hack them, they'll be sorry! ")
     time.sleep(1 * TextSpeed)
     PlayerInput = input("What do you want to do? \n> computer \n" )
     print(r"                                               ..,.oooE777999V(;")
@@ -316,81 +375,83 @@ if PlayerLocation == "home":
     print(r"                                        `L,:    _uuua''")
     print(r"                                          `LaE'' ")
     time.sleep(1.5 * TextSpeed)
-    print(r"Er… how do you hack exactly?")
+    print("Er… how do you hack exactly?")
     time.sleep(1.5 * TextSpeed)
-    print(r"You've just realized, you have no idea where to start.")
+    print("You've just realized, you have no idea where to start.")
     time.sleep(1 * TextSpeed)
-    print(r"You quickly type in a “C”, and the computer autocompletes.")
+    print("You quickly type in a “C”, and the computer autocompletes.")
     time.sleep(1.2 * TextSpeed)
     print(' “ChabGPT.com” stares at you, and you look at it, preparing to type something into the prompt screen to do the hacking for you. ')
     time.sleep(1.0 * TextSpeed)
-    print(r"...")
+    print("...")
     time.sleep(2.0 * TextSpeed)
-    print(r"The same way as it's done all your work thus far.")
+    print("The same way as it's done all your work thus far.")
     time.sleep(2.0 * TextSpeed)
-    print(r"Something stops you.")
+    print("Something stops you.")
     time.sleep(1 * TextSpeed)
-    print(r"You're not sure what it is, but you're motivated now.")
+    print("You're not sure what it is, but you're motivated now.")
     time.sleep(1.0 * TextSpeed)
-    print(r"You want to do this one yourself. ")
+    print("You want to do this one yourself. ")
     time.sleep(1.0 * TextSpeed)
-    print(r"Invigorated by this realization, you instead Google \"How to Hack.\" ") 
+    print("Invigorated by this realization, you instead Google \"How to Hack.\" ") 
     time.sleep(1.5 * TextSpeed)
-    print(r"In the old days, you used to outsource your thinking to Readdit.")
+    print("In the old days, you used to outsource your thinking to Readdit.")
     time.sleep(1.5 * TextSpeed)
-    print(r"That seems good enough for now. Baby steps and all that.")
+    print("That seems good enough for now. Baby steps and all that.")
 
     print('You click the top result from Readdit, simply labeled “How do i Hack poeple.”')
     time.sleep(1.0 * TextSpeed)
-    print(r"")
-    print(r"")
-    print(r"How do i Hack poeple")
-    print(r"")
-    print(r"Hello Every1, I Think I Was Recetnly Chaeted On By My Girlfrend, \nAnd I Want 2 Hack Her To Get Reveng, How Do i Do Taht? I Dont No Anything About Computers")
+    print("")
+    print("")
+    print("How do i Hack poeple")
+    print("")
+    print("Hello Every1, I Think I Was Recetnly Chaeted On By My Girlfrend, \nAnd I Want 2 Hack Her To Get Reveng, How Do i Do Taht? I Dont No Anything About Computers")
     time.sleep(1.0 * TextSpeed)
     input("You should go through the comments. \n >comments \n")
-    print(r"\nu/PeaceAnd4giveness")
-    print(r"You should have an honest conversation with your partner, and either break up with her or drop this train of thought. \nTrying to “hack her” won't make either of you feel any better.")
-    print(r"(35k upvotes) \n")
+    print("\nu/PeaceAnd4giveness")
+    print("You should have an honest conversation with your partner, and either break up with her or drop this train of thought. \nTrying to “hack her” won't make either of you feel any better.")
+    print("(35k upvotes) \n")
     time.sleep(1.0 * TextSpeed)
     input("View next comment? \n")
-    print(r"\nu/SaintSanta")
-    print(r"It's almost December! This is the time for the spirit of Christmas, forgiveness, and togetherness to shine! \nDon't try to hack your girlfriend, just decide whether or not that's a relationship you want to be in. \nIf you can't trust her, hacking her won't make anything better anyway. \nPlus, it's illegal!")
-    print(r"(26k upvotes)")
+    print("\nu/SaintSanta")
+    print("It's almost December! This is the time for the spirit of Christmas, forgiveness, and togetherness to shine! \nDon't try to hack your girlfriend, just decide whether or not that's a relationship you want to be in. \nIf you can't trust her, hacking her won't make anything better anyway. \nPlus, it's illegal!")
+    print("(26k upvotes)")
     time.sleep(3.0 * TextSpeed)
-    print(r"     u/ReplyGuy")
-    print(r"     It's March.")
+    print("     u/ReplyGuy")
+    print("     It's March.")
     time.sleep(1.5) #Not affected by TextSpeed to ensure comedic timing
-    print(r"     (55 downvotes) \n")
+    print("     (55 downvotes) \n")
     time.sleep(0.5 * TextSpeed)
     input("Next post? \n")
-    print(r"\nu/Doom&Gloomer")
-    print(r"It's useless, may as well give up now. \nModern technology and security are too good, nobody really hacks anything anymore.")
-    print(r"(16 downvotes)")
+    print("\nu/Doom&Gloomer")
+    print("It's useless, may as well give up now. \nModern technology and security are too good, nobody really hacks anything anymore.")
+    print("(16 downvotes)")
     time.sleep(2.0 * TextSpeed)
-    print(r"\n \n \n")
-    print(r"All useless, but as you scroll you start to see some actually useful information. \n \n")
+    print("\n \n \n")
+    print("All useless, but as you scroll you start to see some actually useful information. \n \n")
     time.sleep(1.5 * TextSpeed)
-    print(r"u/ScriptBabysitter")
-    print(r"It's probably the absolute simplest option, but you can just put every single possible password until you eventually get it right. ")
-    print(r"This is called a brute-force attack.")
-    print(r"Just about anything made in the last 20+ years will lock you out after you get it wrong a few times, but you'd be surprised by how often it works. ")
-    print(r"Nobody bothers to update their software.")
-    print(r"200 upvotes")
+    print("u/ScriptBabysitter")
+    print("It's probably the absolute simplest option, but you can just put every single possible password until you eventually get it right. ")
+    print("This is called a brute-force attack.")
+    print("Just about anything made in the last 20+ years will lock you out after you get it wrong a few times, but you'd be surprised by how often it works. ")
+    print("Nobody bothers to update their software.")
+    print("200 upvotes")
     time.sleep(4 * TextSpeed)
     print(Style.BRIGHT + Back.YELLOW + "You have unlocked a new technique! Be wary though; brute force won't work everywhere. \n")
     time.sleep(1 * TextSpeed)
     input("\nView Next Post? \n")
-    print(r"\nu/Educ8er")
-    print(r"Obviously malicious hacking is illegal and all that, and I'm pretty sure the original post is one of u/fedditor ‘s honeypots anyway. \n However, for those of you interested in ethical hacking, I recommend you check out the W6Schools program on it! It's pretty simple, (at least at first) but it teaches you things the right way anyway. ")
-    print(r"(30k upvotes)")
+    print("\nu/Educ8er")
+    print("Obviously malicious hacking is illegal and all that, and I'm pretty sure the original post is one of u/fedditor ‘s honeypots anyway. \n However, for those of you interested in ethical hacking, I recommend you check out the W6Schools program on it! It's pretty simple, (at least at first) but it teaches you things the right way anyway. ")
+    print("(30k upvotes)")
     print(Style.BRIGHT + Fore.BLUE + "(You have unlocked www.W6Schools.com! This website will teach you ethical hacking, if you're into that sort of thing. \nYou'll need a job after you get revenge, anyway.)")
     time.sleep(1 * TextSpeed)
     input("\nView Next Post? \n")
     print(r"\u/1e4bdd63d0841c351ba0d1f3812e26fa")
-    print(r"www.9Ub339H38-HJ8hg9hiHG.nz")
-    print(Style.BRIGHT + Fore.RED + "(You have unlocked a mysterious url. Maybe they might know more about how to hack your company.)" )
-    
+    print("www.9Ub339H38-HJ8hg9hiHG.nz")
+    if GameData["SpiderDanceProgress"] == -1:
+        print(Style.BRIGHT + Fore.RED + "(You have unlocked a mysterious url. Maybe they might know more about how to hack your company.)" )
+        GameData["SpiderDanceProgress"] += 1
+    GameLoop()    
 
 elif PlayerLocation == "wander": 
     print(r"///\\          \  /::\\ \_\ \\_:/:\:\:/_____ //:\ \                 /\  /\  /\ ")
@@ -430,8 +491,23 @@ elif PlayerLocation == "wander":
     print(r"_ /     |\  \   |________________/:\/::\///__/ /__//_______/:/\:\ \:\/::\ \:\ ")
     print(r"__________\     \               //\::/\:/___  ___ /       /::\ \:\ \::/\:\ \:\ ")
     print(r"::::::::::\\  \  \             /:\/::\///__/ /__//       /:/\:\ \:\/::\ \:\ \: ")
-    time.sleep(0.8 * TextSpeed)
-    print(r"You wander around the city for a while. ")
-    time.sleep(0.3)
-    input("Ready to start playing for real?")
+    print("You wander around the city for a while. ")
+    time.sleep(1.5)
+    print("Eventually, you manage to find your way to a bar. The sign on the door says \"Smelly's\". Maybe you can drink your woes away? \nAfter all, it seemed to work for your father.")
+    time.sleep(2.0)
+    print("You make your way inside, and it's fairly packed with other guys dressed surprisingly similarly to you, wearing jeans and flannels. \nIt's practically the computer science uniform. ")
+    time.sleep(2.0)
+    print("You ask what's going on, and eventually, somebody tells you.")
+    time.sleep(1.5)
+    print("\"Yeah man, this is our monthly BitSec meeting. Oh, what's that? It's the Bittsburgh Security Group. \nWe're a bunch of people in cybersecurity who meet up to hang out and talk about our jobs. \nBasically, we're ethical hackers, system administrators, and such. \"")
+    time.sleep(2.5)
+    print("Lucky you. This could be a great spot to find a way to get revenge on your company. \n You spend some time talking with them, and make some friends.")
+    time.sleep(2.5)
+    print("Eventually, one of them, a guy who goes by SysAdam, invites you and some of the other first-timers a chance to hack a test server he runs for this kind of thing.")
+    time.sleep(2.0)
+    if GameData["BitSecProgress"] == -1:
+        print(Style.BRIGHT + "You have unlocked BitSec! Go back to your computer to check it out.")
+        GameData["BitSecProgress"] += 1
+        time.sleep(3.0)
+    print("Eventually, the night winds down, and you head back home.")
     GameLoop()

@@ -1,5 +1,4 @@
 {
-    "Inventory": [],
     "Karma": 0,
     "PlayerLocation": "Macrohard",
     "brute_force": 0,
@@ -7,7 +6,7 @@
     "xss_attack": 0,
     "TextSpeed": 1.7,
     "GameProgress": 1,
-    "BitSecProgress": 1,
+    "BitSecProgress": 0,
     "SpiderDanceProgress": 0,
-    "SinKingShipProgress": 0
+    "SinKingShipProgress": -1
 }

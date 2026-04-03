@@ -36,13 +36,14 @@ def BitSecMission1(Attempted=False): #Mission Name: Welcome to Bitsec
         input("Ready? \n")
         BitSecMission1(Attempted=True)
 
-def SpiderDancemission1(Attempted = False): #Mission Name: Welcome to Spider Dance
+def SpiderDancemission1(Attempted = False): #Mission Name: Welcome to SpiderDance
     if Attempted == False:
-        print("Welcome to Spider Dance, noobs. My name is Tuffet, and it's my job to figure out which ones of you are feds, talented, or useless.")
+        print("You click on the mysterious URL, leading you to a TeleOunce group.\n")
+        print("Welcome to SpiderDance, noobs. My name is Tuffet, and it's my job to figure out which ones of you are feds, talented, or useless.")
         print("To begin, you'll try to get into this unsecured server. It doesn't have any protections at all, meaning it should be pretty easy to do. ")
         print("Just brute force it and you can move onto an actually interesting test. ")
         print("The IP is 120.26.59.257:125, and the username you're using is just \"username\"")
-        print("Tell me what the password is\n")
+        print("Tell me what the password is.\n")
         print("     - Tuffet")
         input("Ready? \n")
     print("After a little frantic googling, you figure out how to connect to that IP address. After that, you're met with a login screen.")
@@ -57,7 +58,7 @@ def SpiderDancemission1(Attempted = False): #Mission Name: Welcome to Spider Dan
         print("Yes, that was it! You remember it better now. You successfully find the correct password eventually, and proudly show Tuffet your work.")
         print("\"Good, you understand how a login screen works. It's a start. \" ")
         time.sleep(1.5)
-        print(Style.BRIGHT + "Your reputation with Spider Dance has increased. Your skill with Brute Force has increased.")
+        print(Style.BRIGHT + "Your reputation with SpiderDance has increased. Your skill with Brute Force has increased.")
     elif QuizAnswer == "C":
         print("NO. Technically, this would work eventually. But it would take orders of magnitude more time, and you already have the username. Just try every password.")
         print("Try again.")
@@ -88,7 +89,7 @@ def SinKingShipMission1(Attempted = False): # Mission Name: Welcome to SinKingSh
         print("Yes, that was it! You remember it better now. You successfully find the correct password eventually, and proudly show RootRaider your work.")
         print("\"Good, you understand how a login screen works. It proves you can be taught. \" ")
         time.sleep(1.5)
-        print(Style.BRIGHT + "Your reputation with Spider Dance has increased. Your skill with Brute Force has increased.")
+        print(Style.BRIGHT + "Your reputation with SpiderDance has increased. Your skill with Brute Force has increased.")
     elif QuizAnswer == "C":
         print("NO. Technically, this would work eventually. But it would take orders of magnitude more time, and you already have the username. Just try every password.")
         print("Try again.")
@@ -147,7 +148,7 @@ def SpiderDancemission2(Attempted = False): #Mission Name: Handsome Ransom
         SpiderDancemission2(Attempted=True)
     elif QuizAnswer == "B":
         print("Success! You eventually find an employee you can log into their website with. Whoever this jWhite is, you can't help but feel a little bad for her. \nStill, a job is a job, and you send the credentials to ShoePuppet.")
-        print(Style.BRIGHT + "Your reputation with Spider Dance has increased. Your skill with brute force is now MAXXED.")
+        print(Style.BRIGHT + "Your reputation with SpiderDance has increased. Your skill with brute force is now MAXXED.")
     elif QuizAnswer == "C":
         print("You take a look through their website until you find  random username, jWhite. You input it and run a program to try it with every possible password, but run into a problem after just three attempts. \nAccount lockout. It's not letting you try more passwords.")
         input("Try again? \n")
@@ -221,7 +222,7 @@ def SpiderDanceMission3(Attempted = False): #Mission Name: Operation Iridescent 
         print("     -Spyder")
         input("\nReady?\n")
         print("You successfully use the RainbowTable app you installed to check if their hashing is insecure.\nIt is!")
-        print(Style.BRIGHT + "You aren't talented enough at math to have a better understanding of Rainbow Tables, so your skill is still MAXXED. Your reputation with Spider Dance has increased!")
+        print(Style.BRIGHT + "You aren't talented enough at math to have a better understanding of Rainbow Tables, so your skill is still MAXXED. Your reputation with SpiderDance has increased!")
 
 def SinKingShipMission3(Attempted = False):
     if Attempted == False:
@@ -295,9 +296,9 @@ def SpiderDanceMission4(usernamelist = False, Attempted = False): #Mission Name:
         SpiderDanceMission4(Attempted=True)
     elif QuizAnswer == "A" and usernamelist == True:
         print("Success! With the list of usernames you've obtained, you manage to execute a reverse brute force attack, obtaining access credentials of multiple bank members.")
-        print(Style.BRIGHT + "Your skill with XSS attacks has increased! Your reputation with Spider Dance has increased!")
+        print(Style.BRIGHT + "Your skill with XSS attacks has increased! Your reputation with SpiderDance has increased!")
     elif QuizAnswer == "B":
-        print("\"Hello, BlueGolem. My name is ProFit, and Spyder has informed me that you would be assisting me with this operation. \nMy current best idea is to perform an XSS attack on their web page, causing it to send the credentials of all successful login attempts to a website owned by Spider Dance.\"")
+        print("\"Hello, BlueGolem. My name is ProFit, and Spyder has informed me that you would be assisting me with this operation. \nMy current best idea is to perform an XSS attack on their web page, causing it to send the credentials of all successful login attempts to a website owned by SpiderDance.\"")
         print("The two of you attempt the XSS attack, but with only some success. You manage to get a list of usernames, but the passwords are encrypted and salted before they get to you.")
         print(Style.BRIGHT + "If only there was something you could do with a list of usernames.")
         input("Ready?\n")
@@ -343,7 +344,7 @@ def SinKingShipMission4(Attempted=False): #Mission Name: Lethal Injection
 def BitSecMission5(Attempted = False): #Mission Name: Operation Arachnicide
     if Attempted == False:
         print("This is Agent Kaid White. You know me as Fedditor.")
-        print("Spyder, the leader of the hacking group known as Spider Dance, has finally overstepped for the first time in over a decade.")
+        print("Spyder, the leader of the hacking group known as SpiderDance, has finally overstepped for the first time in over a decade.")
         print("He left his browser unsecured. We've already logged his cookies, but they're nothing useful.")
         print("If we can find a way to make him do something incriminating with that browser, we can put him behind bars.")
         input("Ready?\n")
@@ -376,12 +377,12 @@ def BitSecMission5(Attempted = False): #Mission Name: Operation Arachnicide
         print("After he logs in, there's a few minutes of him just looking at memes. Some of them are actually pretty funny.")
         print("Still, after a while he goes into a server with a similarly weird-looking name, and it's there that you can see some real crime happening.")
         time.sleep(1.0)
-        print("Bingo. You see the usernames of other semi-known members of Spider Dance, like Cackler and ShoePuppet.")
+        print("Bingo. You see the usernames of other semi-known members of SpiderDance, like Cackler and ShoePuppet.")
         print("Ladies and gentlemen, we got em. You see them discussing new jobs, and the combination of the screen recorder and the keylogger are enough to get more than enough incriminating evidence to put Spyder away.")
         time.sleep(2.0)
         print("You pass the data over to Fedditor, along with a little present of your own design.")
         time.sleep(1.0)
-        print("You manage to maintain the login even after Spyder closes the application on his end. \nThus, Fedditor has a way in with every single other member of Spider Dance and can impersonate Spyder to try to get more of them.")
+        print("You manage to maintain the login even after Spyder closes the application on his end. \nThus, Fedditor has a way in with every single other member of SpiderDance and can impersonate Spyder to try to get more of them.")
         print(Style.BRIGHT + "Your reputation with BitSec is now MAXXED. Your skill with MITM attacks is now MAXXED.")
     elif QuizAnswer == "D":
         print("Nothing of use here. You see some medical appointments or TV shows, but that's about the extent of it. \nYou almost feel bad for him, this guy has no social life.")
@@ -414,11 +415,11 @@ def SpiderDanceMission5(Attempted = False): #Mission Name: Spyder Bites
         time.sleep(1.0)
         print("Of the small amount that's left, there are some useful ones.")
         time.sleep(1.0)
-        print("You find some emails about future federal projects, some attack plans, and even some information on other 3rd-party hackers that Spider Dancers have worked with in the past.")
+        print("You find some emails about future federal projects, some attack plans, and even some information on other 3rd-party hackers that SpiderDancers have worked with in the past.")
         input("View?\n")
         print("You find dossiers on Markenary, RxGoon, ProFit, and even Brainz4Rent. Most of them are just behavioral patterns, but Brainz's dossier has his name and address. \nIt looks like they're planning on arressting him soon.")
         print("You save all the emails, sharing the work emails with Spyder. You don't share the personal emails though. \nEven if you're a criminal, some things should still be sacred.")
-        print(Style.BRIGHT + "Your reputation with Spider Dance is MAXXED. Your skill with MITM attacks is MAXXED.")
+        print(Style.BRIGHT + "Your reputation with SpiderDance is MAXXED. Your skill with MITM attacks is MAXXED.")
     if QuizAnswer == "B":
         print("Taking a look through their internal comms app, you don't find too much of value. The stuff in there is automatically deleted after being read. \nYou set up a logger for later, but as of now, this isn't anything.")
         input("Ready to try again?\n")
